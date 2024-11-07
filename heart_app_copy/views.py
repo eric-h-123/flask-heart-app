@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import render_template, request
+from flask import Flask, jsonify, request, render_template
 from datetime import datetime
 from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
@@ -13,18 +12,24 @@ model = joblib.load(model_path)
 @app.route("/", methods=["GET", "POST"])
 def demo1():
     if request.method == "POST":
-        # Get form data
-        age = int(request.form.get("age"))
-        sex = int(request.form.get("sex"))
-        chest_pain = int(request.form.get("chest_pain"))
-        resting_bp = int(request.form.get("resting_bp"))
-        cholesterol = int(request.form.get("cholesterol"))
-        fasting_bs = int(request.form.get("fasting_bs"))
-        resting_ecg = int(request.form.get("resting_ecg"))
-        max_hr = int(request.form.get("max_hr"))
-        exercise_angina = int(request.form.get("exercise_angina"))
-        oldpeak = float(request.form.get("oldpeak"))
-        st_slope = int(request.form.get("st_slope"))
+        # Retrieve JSON data from the fetch request
+        data = request.get_json()
+        
+        # Parse form data
+        try:
+            age = int(data.get("age"))
+            sex = int(data.get("sex"))
+            chest_pain = int(data.get("chest_pain"))
+            resting_bp = int(data.get("resting_bp"))
+            cholesterol = int(data.get("cholesterol"))
+            fasting_bs = int(data.get("fasting_bs"))
+            resting_ecg = int(data.get("resting_ecg"))
+            max_hr = int(data.get("max_hr"))
+            exercise_angina = int(data.get("exercise_angina"))
+            oldpeak = float(data.get("oldpeak"))
+            st_slope = int(data.get("st_slope"))
+        except (TypeError, ValueError):
+            return jsonify({"error": "Invalid input"}), 400
 
         # Create a DataFrame for prediction
         input_data = pd.DataFrame({
@@ -45,9 +50,11 @@ def demo1():
         prediction = model.predict(input_data)[0]
         probability = model.predict_proba(input_data)[0][1] * 100
 
-        # Render result in HTML template
-        return render_template("demo1.html", result=prediction, probability=probability)
+        # Send back JSON response with prediction and probability
+        return jsonify({
+            "prediction": int(prediction.item()), "probability": float(probability)})
 
+    # Render HTML template on GET request
     return render_template("demo1.html")
 
 # New functions
