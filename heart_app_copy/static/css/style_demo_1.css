@@ -1,5 +1,9 @@
 body {
     background-image: url(/static/images/Elegant_Background-4.jpg);
+    background-size: cover; /* Ensures the image covers the viewport */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the image in place when scrolling */
+    background-position: center; /* Centers the image */
 }
 
 .info-section {

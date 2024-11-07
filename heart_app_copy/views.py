@@ -52,7 +52,8 @@ def demo1():
 
         # Send back JSON response with prediction and probability
         return jsonify({
-            "prediction": int(prediction.item()), "probability": float(probability)})
+            "prediction": int(prediction.item()), # Convert numpy type to Python for JSON serialization
+            "probability": float(probability)})  # " "
 
     # Render HTML template on GET request
     return render_template("demo1.html")
