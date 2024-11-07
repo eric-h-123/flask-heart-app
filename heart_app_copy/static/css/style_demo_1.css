@@ -1,3 +1,6 @@
+body {
+    background-image: url(/static/images/Elegant_Background-4.jpg);
+}
 
 .info-section {
     overflow-y: auto;  /* Enable scrolling for the text */
