@@ -1,7 +1,5 @@
 
-
 .info-section {
-    max-height: 400px; /* Set max height to limit the size */
     overflow-y: auto;  /* Enable scrolling for the text */
     background-color: #f8f9fa;
 }
@@ -15,6 +13,21 @@
     font-size: 1.5rem;
     color: #6c757d;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.image-container img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: none; /* Remove any height constraint */
+    object-fit: contain; /* Ensures the image scales without distortion */
+}
+
 
 .form-section {
     background-color: #fff;
