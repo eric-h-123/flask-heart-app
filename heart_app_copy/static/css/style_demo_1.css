@@ -5,6 +5,7 @@ body {
 .info-section {
     overflow-y: auto;  /* Enable scrolling for the text */
     background-color: #f8f9fa;
+    opacity: .7;
 }
 
 .info-text {
@@ -34,6 +35,7 @@ body {
 
 .form-section {
     background-color: #fff;
+    opacity: .7;
 }
 
 .form-section h2 {
