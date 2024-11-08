@@ -10,7 +10,7 @@ model_path = os.path.join(os.path.dirname(__file__), 'models/clf.pkl')
 model = joblib.load(model_path)
 
 @app.route("/", methods=["GET", "POST"])
-def demo1():
+def index():
     if request.method == "POST":
         # Retrieve JSON data from the fetch request
         data = request.get_json()
@@ -56,7 +56,7 @@ def demo1():
             "probability": float(probability)})  # " "
 
     # Render HTML template on GET request
-    return render_template("demo1.html")
+    return render_template("index.html")
 
 # New functions
 @app.route("/about/")
