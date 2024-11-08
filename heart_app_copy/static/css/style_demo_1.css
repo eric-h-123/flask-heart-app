@@ -5,7 +5,6 @@ body {
     background-attachment: fixed; /* Keeps the image in place when scrolling */
     background-position: center; /* Centers the image */
 }
-
 .info-section {
     overflow-y: auto;  /* Enable scrolling for the text */
     background-color: #f8f9fa;
@@ -32,7 +31,7 @@ body {
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: none; /* Remove any height constraint */
+    max-height: none; 
     object-fit: contain; /* Ensures the image scales without distortion */
 }
 
@@ -42,14 +41,15 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-height: 720px; /* Set max height as desired */
+    max-height: 720px; 
     overflow-y: auto; /* Enable vertical scrolling */
     opacity: .7;
 }
 
+
 .form-section h2 {
     font-size: 1.5rem;
-    color: #1c1c1d;
+    color: #007bff;
 }
 
 .form-control, .form-select {
@@ -72,4 +72,9 @@ body {
     width: 100%;
     height: auto;
     max-height: 200px;
+}
+
+.tooltip .tooltip-inner {
+    max-width: 325px !important;
+    text-align: left;
 }
