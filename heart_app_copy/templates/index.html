@@ -14,10 +14,10 @@
     <header class="header text-center my-1">
         <img src="{{ url_for('static', filename='images/header.png') }}" alt="Heart Logo" class="logo">
     </header>
-    <div class="container px-5 py-5">
-        <div class="row align-items-stretch gx-5">
+    <div class="container px-4 py-4">
+        <div class="row align-items-stretch gx-4">
             <!-- Left Column: Info Section -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-12">
                 <div class="info-section bg-light p-4 rounded shadow">
                     <h2>How to Use the Heart Disease Predictor</h2>
                     <div class="info-text">
@@ -46,7 +46,7 @@
             </div>
             
             <!-- Right Column: Form Section -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-12 mt-3 mt-md-0">
                 <div class="form-section bg-white p-4 rounded shadow">
                     <h2 class="text-center mb-4">Input Your Health Data</h2>
                     <form id="healthForm" action="/" method="POST">
