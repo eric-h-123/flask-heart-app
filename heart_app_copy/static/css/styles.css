@@ -1,9 +1,9 @@
 body {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)),url(/static/images/Elegant_Background-4.jpg);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)),url(/static/images/Elegant_Background-4.jpg); /*Lightens header section*/
     background-size: cover; /* Ensures the image covers the viewport */
     background-repeat: no-repeat; /* Prevents tiling */
     background-attachment: fixed; /* Keeps the image in place when scrolling */
-    background-position: center; /* Centers the image */
+    background-position: center; 
 }
 
 .container {
@@ -11,8 +11,16 @@ body {
 }
 
 .row {
-    display: flex; /* Enables flex layout */
+    display: flex; 
     align-items: stretch;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
 .info-section,
@@ -43,14 +51,6 @@ body {
 .logo {
     max-width: 300px;
     height: auto;
-    margin: 0;
-}
-
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
     margin: 0;
 }
 

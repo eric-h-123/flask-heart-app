@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Disease Prediction</title>
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
@@ -21,22 +20,57 @@
                 <div class="info-section bg-light p-4 rounded shadow">
                     <h2>How to Use the Heart Disease Predictor</h2>
                     <div class="info-text">
-                        <p>
-                            Enter your health details in the form on the right to predict the likelihood of heart disease.
-                            The model uses several health metrics such as:
-                        </p>
+                        <p>Enter your health details in the form on the right to predict the likelihood of heart disease. The model uses several health metrics:</p>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Age</li>
-                            <li class="list-group-item">Sex (Gender)</li>
-                            <li class="list-group-item">Chest Pain Type</li>
-                            <li class="list-group-item">Resting Blood Pressure</li>
-                            <li class="list-group-item">Cholesterol</li>
-                            <li class="list-group-item">Fasting Blood Sugar</li>
-                            <li class="list-group-item">Resting ECG</li>
-                            <li class="list-group-item">Maximum Heart Rate</li>
-                            <li class="list-group-item">Exercise-Induced Angina</li>
-                            <li class="list-group-item">Oldpeak (ST depression)</li>
-                            <li class="list-group-item">ST Slope</li>
+                            <li class="list-group-item">
+                                <strong>Age:</strong> Your current age in years.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Sex (Gender):</strong> Select Male or Female.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Chest Pain Type:</strong>
+                                <ul>
+                                    <li><strong>Typical Angina:</strong> Chest pain from exertion or reduced blood flow.</li>
+                                    <li><strong>Atypical Angina:</strong> Chest discomfort not triggered by exertion.</li>
+                                    <li><strong>Non-Anginal Pain:</strong> Chest pain from non-heart-related causes.</li>
+                                    <li><strong>Asymptomatic:</strong> No chest pain symptoms.</li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Resting Blood Pressure (mm Hg):</strong> Enter your blood pressure at rest.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Cholesterol (mg/dL):</strong> Enter your total cholesterol level.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Fasting Blood Sugar:</strong> Is fasting blood sugar over 120 mg/dL? (Yes/No)
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Resting ECG:</strong> Resting electrocardiogram result. Choose one:
+                                <ul>
+                                    <li><strong>Normal:</strong> No abnormalities.</li>
+                                    <li><strong>ST:</strong> Abnormal ST-T wave changes.</li>
+                                    <li><strong>LVH:</strong> Potential left ventricular hypertrophy.</li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Maximum Heart Rate:</strong> The highest heart rate achieved during exercise.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Exercise-Induced Angina:</strong> Chest pain during exercise? (Yes/No)
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Oldpeak (ST depression):</strong> ST depression during exercise, indicating possible reduced blood flow.
+                            </li>
+                            <li class="list-group-item">
+                                <strong>ST Slope:</strong> ECG ST segment slope:
+                                <ul>
+                                    <li><strong>Up:</strong> Indicates better heart health.</li>
+                                    <li><strong>Flat:</strong> Neutral slope.</li>
+                                    <li><strong>Down:</strong> May indicate ischemia.</li>
+                                </ul>
+                            </li>
                         </ul>
                         <p>
                             Once all the required fields are filled, submit the form to get the prediction results.
@@ -211,7 +245,7 @@
     
                     const data = await response.json();
     
-                    // Display the result (customize as needed)
+                    // Display the result
                     const resultDiv = document.querySelector(".result");
                     resultDiv.innerHTML = `
                         <h2 class="text-center">Prediction: ${data.prediction === 1 ? "Heart Disease" : "No Heart Disease"}</h2>
