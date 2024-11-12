@@ -11,10 +11,13 @@
 
 </head>
 <body>
+    <header class="header text-center my-1">
+        <img src="{{ url_for('static', filename='images/header.png') }}" alt="Heart Logo" class="logo">
+    </header>
     <div class="container py-5">
         <div class="row">
             <!-- Left Column: Info Section -->
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg-6">
                 <div class="info-section bg-light p-4 rounded shadow">
                     <h2>How to Use the Heart Disease Predictor</h2>
                     <div class="info-text">

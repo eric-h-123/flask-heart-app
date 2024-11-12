@@ -75,3 +75,9 @@ body {
     max-width: 325px !important;
     text-align: left;
 }
+
+.logo {
+    max-width: 300px;
+    height: auto;
+    margin: 0;
+}
