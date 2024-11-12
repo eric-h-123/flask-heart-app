@@ -5,79 +5,55 @@ body {
     background-attachment: fixed; /* Keeps the image in place when scrolling */
     background-position: center; /* Centers the image */
 }
-.info-section {
-    overflow-y: auto;  /* Enable scrolling for the text */
-    background-color: #f8f9fa;
-    opacity: .7;
-}
 
-.info-text {
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.info-section h2 {
-    font-size: 1.5rem;
-    color: #6c757d;
-}
-
-.image-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-
-.image-container img {
-    width: auto;
+.container {
     max-width: 100%;
-    height: auto;
-    max-height: none; 
-    object-fit: contain; /* Ensures the image scales without distortion */
 }
 
+.row {
+    display: flex; /* Enables flex layout */
+    align-items: stretch;
+}
+
+.info-section,
+.form-section {
+    flex: 1; /* Ensures both sections take up equal width */
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 20px;
+    background-color: #fff;
+    
+}
+
+.info-section {
+    overflow-y: auto;
+}
 
 .form-section {
-    background-color: #fff;
-    max-height: 890px; 
-    overflow-y: auto; /* Enable vertical scrolling */
-    opacity: .7;
+    overflow-y: auto;
 }
 
-
+.info-section h2,
 .form-section h2 {
     font-size: 1.5rem;
-    color: #007bff;
-}
-
-.form-control, .form-select {
-    font-size: 1rem;
-    padding: 10px;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-/* Ensure the image fills the width of its container but retains its aspect ratio */
-.info-section img {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-}
-
-.tooltip .tooltip-inner {
-    max-width: 325px !important;
-    text-align: left;
 }
 
 .logo {
     max-width: 300px;
     height: auto;
     margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip .tooltip-inner {
+    max-width: 325px !important;
+    text-align: left;
 }

@@ -14,8 +14,8 @@
     <header class="header text-center my-1">
         <img src="{{ url_for('static', filename='images/header.png') }}" alt="Heart Logo" class="logo">
     </header>
-    <div class="container py-5">
-        <div class="row">
+    <div class="container px-5 py-5">
+        <div class="row align-items-stretch gx-5">
             <!-- Left Column: Info Section -->
             <div class="col-lg-6">
                 <div class="info-section bg-light p-4 rounded shadow">
@@ -41,12 +41,6 @@
                         <p>
                             Once all the required fields are filled, submit the form to get the prediction results.
                         </p>
-                    </div>
-                    <!-- Move the image outside of the scrollable content -->
-                    <div class="mt-4 text-center">
-                        <div class="image-container">
-                            <img src="{{ url_for('static', filename='images/heart_turqoise.jpg') }}" alt="Heart Health" class="img-fluid rounded">
-                        </div>
                     </div>
                 </div>
             </div>
