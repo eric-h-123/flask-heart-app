@@ -102,17 +102,7 @@
 
                         <!-- Chest Pain Type -->
                         <div class="mb-3">
-                            <label for="chest_pain" class="form-label">
-                                Chest Pain Type
-                                <i class="bi bi-info-circle-fill text-primary ms-1"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="right"
-                                    data-bs-html="true"
-                                    title="Typical Angina: Chest pain due to reduced blood flow, often triggered by exertion. <br>
-                                    Atypical Angina: Less specific chest discomfort, not necessarily related to exertion. <br>
-                                    Non-Anginal Pain: Chest pain from non-heart-related causes. <br>
-                                    Asymptomatic: No chest pain."></i>
-                            </label>
+                            <label for="chest_pain" class="form-label">Chest Pain Type</label>
                             <select class="form-select" id="chest_pain" name="chest_pain" required>
                                 <option value="" disabled selected>Select your chest pain type</option>
                                 <option value="0">Typical Angina</option>
@@ -174,24 +164,13 @@
                         <!-- Oldpeak -->
                         <div class="mb-3">
                             <label for="oldpeak" class="form-label">
-                                Oldpeak (ST depression)
-                                <i class="bi bi-info-circle-fill text-primary ms-1"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="right"
-                                    title="ST (segment of ECG between S and T waves) depression during exercise, may indicate reduced blood flow."></i>
-                            </label>
+                                Oldpeak (ST depression)</label>
                             <input type="number" step="0.1" class="form-control" id="oldpeak" name="oldpeak" placeholder="Enter oldpeak value" required>
                         </div>
 
                         <!-- ST Slope -->
                         <div class="mb-3">
-                            <label for="st_slope" class="form-label">
-                                ST Slope
-                                <i class="bi bi-info-circle-fill text-primary ms-1"
-                                    data-bs-toggle="tooltip"
-                                    data-bs-placement="right"
-                                    title="The ECG ST segment slope: 'Up' (better), 'Flat', or 'Down' (possible ischemia)."></i>
-                            </label>
+                            <label for="st_slope" class="form-label">ST Slope</label>
                             <select class="form-select" id="st_slope" name="st_slope" required>
                                 <option value="" disabled selected>Enter ST slope</option>
                                 <option value="0">Up</option>
@@ -254,16 +233,6 @@
                 } catch (error) {
                     console.error("Error:", error);
                 }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl, {
-                    trigger: 'click'  // Use click to activate tooltip
-                });
             });
         });
     </script>
