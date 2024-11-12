@@ -22,16 +22,17 @@ body {
     flex-direction: column;
     min-height: 100%;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(248, 249, 250,) !important;
+
     
 }
 
 .info-section {
-    overflow-y: auto;
+    opacity: .7;
 }
 
 .form-section {
-    overflow-y: auto;
+    opacity: .8;
 }
 
 .info-section h2,
