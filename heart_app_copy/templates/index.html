@@ -183,13 +183,9 @@
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
+                        <div class="result mt-4"></div>
                     </form>
-                    {% if result is not none %}
-                    <div class="result mt-4">
-                      <h2 class="text-center">Prediction: {{ 'Heart Disease' if result == 1 else 'No Heart Disease' }}</h2>
-                      <p class="text-center">Probability: {{ probability }}%</p>
-                    </div>
-                    {% endif %}
+
                 </div>
             </div>
         </div>
@@ -230,6 +226,8 @@
                         <h2 class="text-center">Prediction: ${data.prediction === 1 ? "Heart Disease" : "No Heart Disease"}</h2>
                         <p class="text-center">Probability: ${data.probability}%</p>
                     `;
+                    resultDiv.style.display = "block";
+                    
                 } catch (error) {
                     console.error("Error:", error);
                 }

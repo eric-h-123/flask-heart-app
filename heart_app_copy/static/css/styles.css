@@ -48,6 +48,10 @@ body {
     font-size: 1.5rem;
 }
 
+.result {
+    display: none;
+}
+
 .logo {
     max-width: 300px;
     height: auto;
