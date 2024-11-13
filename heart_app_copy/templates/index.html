@@ -82,7 +82,12 @@
             <!-- Right Column: Form Section -->
             <div class="col-lg-6 col-12 mt-3 mt-md-0">
                 <div class="form-section bg-white p-4 rounded shadow">
-                    <h2 class="text-center mb-4">Input Your Health Data</h2>
+                    <h2 class="text-center mb-4">
+                        Input Your Health Data or
+                        <button type="button" class="btn btn-info btn-md ms-2 fw-bold" onclick="loadSampleData()">Load Sample Data</button>
+                    </h2>
+                    </h2>
+                    
                     <form id="healthForm" action="/" method="POST">
                         <!-- Age -->
                         <div class="mb-3">
@@ -233,6 +238,35 @@
                 }
             });
         });
+    </script>
+    <script>
+        function loadSampleData() {
+            const sampleData = {
+                age: 65,
+                sex: 1,
+                chest_pain: 2,
+                resting_bp: 160,
+                cholesterol: 260,
+                fasting_bs: 1,
+                resting_ecg: 2,
+                max_hr: 120,
+                exercise_angina: 1,
+                oldpeak: 3.0,
+                st_slope: 2
+            };
+    
+            document.getElementById("age").value = sampleData.age;
+            document.getElementById("sex").value = sampleData.sex;
+            document.getElementById("chest_pain").value = sampleData.chest_pain;
+            document.getElementById("resting_bp").value = sampleData.resting_bp;
+            document.getElementById("cholesterol").value = sampleData.cholesterol;
+            document.getElementById("fasting_bs").value = sampleData.fasting_bs;
+            document.getElementById("resting_ecg").value = sampleData.resting_ecg;
+            document.getElementById("max_hr").value = sampleData.max_hr;
+            document.getElementById("exercise_angina").value = sampleData.exercise_angina;
+            document.getElementById("oldpeak").value = sampleData.oldpeak;
+            document.getElementById("st_slope").value = sampleData.st_slope;
+        }
     </script>
 </body>
 </html>
