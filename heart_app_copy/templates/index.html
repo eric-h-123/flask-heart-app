@@ -200,12 +200,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("healthForm"); // Target the specific form by ID
+            // Target the specific form by ID
+            const form = document.getElementById("healthForm");
+            // Add an event listener to the form's submit event 
             form.addEventListener("submit", async function (event) {
-                event.preventDefault(); // Prevent the default form submission
+                // Prevent the default form submission
+                event.preventDefault();
     
-                // Gather form data
+                // Gather form data as a FormData object
                 const formData = new FormData(form);
+
+                // Convert FormData into a plain JavaScript object for easier manipulation
                 const formObject = {};
                 formData.forEach((value, key) => (formObject[key] = value));
     
@@ -214,15 +219,17 @@
                     const response = await fetch("/", {
                         method: "POST",
                         headers: {
-                            "Content-Type": "application/json",
+                            "Content-Type": "application/json", // Specify JSON format
                         },
-                        body: JSON.stringify(formObject),
+                        body: JSON.stringify(formObject), // Convert form data to JSON
                     });
-    
+                    
+                    // Check if response was successful
                     if (!response.ok) {
                         throw new Error("Network response was not ok");
                     }
-    
+                    
+                    // Parse response data as JSON
                     const data = await response.json();
     
                     // Display the result
@@ -231,15 +238,21 @@
                         <h2 class="text-center">Prediction: ${data.prediction === 1 ? "Heart Disease" : "No Heart Disease"}</h2>
                         <p class="text-center">Probability: ${data.probability}%</p>
                     `;
+
+                    // Ensure result section is visible
                     resultDiv.style.display = "block";
                     
                 } catch (error) {
+                    // Log errors
                     console.error("Error:", error);
+                
+                    alert("There was an issue submitting the form. Please try again.");
                 }
             });
         });
     </script>
     <script>
+        // Load sample data into form fields
         function loadSampleData() {
             const sampleData = {
                 age: 65,
@@ -254,7 +267,8 @@
                 oldpeak: 3.0,
                 st_slope: 2
             };
-    
+            
+            // Populate form fields with sample data by matching field IDs
             document.getElementById("age").value = sampleData.age;
             document.getElementById("sex").value = sampleData.sex;
             document.getElementById("chest_pain").value = sampleData.chest_pain;
