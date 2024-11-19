@@ -6,11 +6,19 @@ import joblib
 import os
 from . import app
 
+# Load the pre-trained machine learning model
 model_path = os.path.join(os.path.dirname(__file__), 'models/clf.pkl')
 model = joblib.load(model_path)
 
+# Define the main route for the application
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """
+    Handles requests to the root URL ("/") for the application.
+    -GET: Serves the HTML template for the main application.
+    -POST: Processes the form data from the client, runs predictions, and returns results.
+    """
+
     if request.method == "POST":
         # Retrieve JSON data from the fetch request
         data = request.get_json()
@@ -29,6 +37,7 @@ def index():
             oldpeak = float(data.get("oldpeak"))
             st_slope = int(data.get("st_slope"))
         except (TypeError, ValueError):
+            # Handle invalid input
             return jsonify({"error": "Invalid input"}), 400
 
         # Create a DataFrame for prediction
