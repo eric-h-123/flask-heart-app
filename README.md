@@ -128,6 +128,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## **Acknowledgments**
 Special thanks to the open-source tools and libraries that made this project possible:
 - Flask, Scikit-learn, and AWS services.
-- **Kaggle Dataset**: Heart disease dataset used for training the model.  
+- **Kaggle Dataset**: Heart disease dataset used for training the machine learning model.  
   Dataset Link: [Heart Disease Dataset on Kaggle](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)
 
