@@ -4,11 +4,15 @@ from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
 import joblib
 import os
+import json
 from . import app
 
 # Load the pre-trained machine learning model
 model_path = os.path.join(os.path.dirname(__file__), 'models/clf.pkl')
 model = joblib.load(model_path)
+
+# Temporary global variable to store latest user metrics
+latest_user_metrics = None
 
 # Define the main route for the application
 @app.route("/", methods=["GET", "POST"])
@@ -83,6 +87,9 @@ def index():
             "Prediction": "Positive" if prediction else "Negative",
             "Probability": f"{probability:.2f}%"
         }
+
+        global latest_user_metrics
+        latest_user_metrics = user_metrics
         
         # Send back JSON response with prediction and probability
         return jsonify({
@@ -91,5 +98,25 @@ def index():
 
     # Render HTML template on GET request
     return render_template("index.html")
+
+@app.route("/send-summary", methods=["POST"])
+def send_summary():
+    global latest_user_metrics
+
+    data = request.get_json()
+    email = data.get("email")
+
+    if not email:
+        return jsonify({"error": "Email is required"}), 400
+    
+    if not latest_user_metrics:
+        return jsonify({"error": "No metrics available to send"}), 400
+    
+    summary = json.dumps(latest_user_metrics, indent=4)
+
+    print("Formatted Summary:\n", summary)
+    return jsonify({"message": "Summary prepared successfully"})
+
+    
     
 
