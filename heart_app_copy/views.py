@@ -59,11 +59,37 @@ def index():
         prediction = model.predict(input_data)[0]
         probability = model.predict_proba(input_data)[0][1] * 100
 
+        SEX_MAPPING = {0: "Female", 1: "Male"}
+        CHEST_PAIN_MAPPING = {0: "Typical Angina", 1: "Atypical Angina", 2: "Non-Anginal Pain", 3: "Asymptomatic"}
+        FASTING_BS_MAPPING = {0: "120mg/dl or under", 1: "Over 120mg/dl"}
+        RESTING_ECG_MAPPING = {0: "Normal", 1: "ST", 2: "LVH"}
+        EXERCISE_ANGINA_MAPPING = {0: "No", 1: "Yes"}
+        ST_SLOPE_MAPPING = {0: "Up", 1: "Flat", 2: "Down"}
+
+        user_metrics = {
+            "Age": age,
+            "Sex": SEX_MAPPING.get(sex, "Unknown"),
+            "Chest Pain Type": CHEST_PAIN_MAPPING.get(chest_pain, "Unknown"),
+            "Resting BP": resting_bp,
+            "Cholesterol": cholesterol,
+            "Fasting Blood Sugar": FASTING_BS_MAPPING.get(fasting_bs, "Unknown"),
+            "Resting ECG": RESTING_ECG_MAPPING.get(resting_ecg, "Unknown"),
+            "Max Heart Rate": max_hr,
+            "Exercise Angina": EXERCISE_ANGINA_MAPPING.get(exercise_angina, "Unknown"),
+            "Oldpeak": oldpeak,
+            "ST Slope": ST_SLOPE_MAPPING.get(st_slope, "Unknown"),
+            "Prediction": "Positive" if prediction else "Negative",
+            "Probability": f"{probability:.2f}%"
+        }
+        import json
+        print(json.dumps(user_metrics, indent=4))
+
         # Send back JSON response with prediction and probability
         return jsonify({
             "prediction": int(prediction.item()), # Convert numpy type to Python for JSON serialization
-            "probability": float(probability)})  # " "
+            "probability": float(probability)})  # " "    
 
     # Render HTML template on GET request
     return render_template("index.html")
+    
 
