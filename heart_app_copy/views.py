@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, render_template
+from .email_service import send_mail
 from datetime import datetime
 from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
@@ -117,6 +118,25 @@ def send_summary():
     print("Formatted Summary:\n", summary)
     return jsonify({"message": "Summary prepared successfully"})
 
-    
-    
+# Test email service
+@app.route("/test-email", methods=["GET"])
+def test_email():
+    """
+    Test endpoint to verify email functionality.
+    """
+    try:
+        # Call the send_mail function
+        success = send_mail(
+            to_email="email.service.54321@gmail.com",  # Replace with recipient's email address
+            subject="Test Email from Flask App",
+            body="This is a test email sent from the Flask app."
+        )
+
+        # Return success or failure response
+        if success:
+            return jsonify({"message": "Email sent successfully!"}), 200
+        else:
+            return jsonify({"message": "Failed to send email."}), 500
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
