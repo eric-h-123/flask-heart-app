@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, session
 from .email_service import send_mail
 from datetime import datetime
 from sklearn.ensemble import RandomForestClassifier
@@ -11,9 +11,6 @@ from . import app
 # Load the pre-trained machine learning model
 model_path = os.path.join(os.path.dirname(__file__), 'models/clf.pkl')
 model = joblib.load(model_path)
-
-# Temporary global variable to store latest user metrics
-latest_user_metrics = None
 
 # Define the main route for the application
 @app.route("/", methods=["GET", "POST"])
@@ -89,8 +86,8 @@ def index():
             "Probability": f"{probability:.2f}%"
         }
 
-        global latest_user_metrics
-        latest_user_metrics = user_metrics
+        
+        session["latest_user_metrics"] = user_metrics
         
         # Send back JSON response with prediction and probability
         return jsonify({
@@ -102,7 +99,8 @@ def index():
 
 @app.route("/send-summary", methods=["POST"])
 def send_summary():
-    global latest_user_metrics
+    
+    latest_user_metrics = session.get("latest_user_metrics")
 
     data = request.get_json()
     email = data.get("email")
@@ -123,6 +121,7 @@ def send_summary():
     )
 
     if success:
+        session.pop("latest_user_metrics", None) # Clear the session data after email sent
         return jsonify({"message": "Email sent successfully!"}), 200
     else:
         return jsonify({"error": "Failed to send email."}), 500
