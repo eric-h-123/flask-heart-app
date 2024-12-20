@@ -115,8 +115,17 @@ def send_summary():
     
     summary = json.dumps(latest_user_metrics, indent=4)
 
-    print("Formatted Summary:\n", summary)
-    return jsonify({"message": "Summary prepared successfully"})
+        # Send the email
+    success = send_mail(
+        to_email=email,
+        subject="Your Heart Disease Prediction Summary",
+        body=f"Here is your heart disease prediction summary:\n\n{summary}"
+    )
+
+    if success:
+        return jsonify({"message": "Email sent successfully!"}), 200
+    else:
+        return jsonify({"error": "Failed to send email."}), 500
 
 # Test email service
 @app.route("/test-email", methods=["GET"])
