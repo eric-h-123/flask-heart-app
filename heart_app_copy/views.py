@@ -121,9 +121,6 @@ def send_summary():
 # Test email service
 @app.route("/test-email", methods=["GET"])
 def test_email():
-    """
-    Test endpoint to verify email functionality.
-    """
     try:
         # Call the send_mail function
         success = send_mail(
